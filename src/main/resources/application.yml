@@ -1,0 +1,25 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: services
+          uri: ${BACKED_URL:http://localhost:8080}
+          predicates:
+            - Path=/services/**
+
+        - id: websocket
+          uri: ${BACKED_URL:http://localhost:8080}
+          predicates:
+            - Path=/services/socket/**
+
+        - id: app
+          uri: ${APP_URL:http://localhost:8080}
+          predicates:
+            - Path=/*
+
+        - id: app-assets
+          uri: ${APP_URL:http://localhost:8080}
+          predicates:
+            - Path=/assets/**
