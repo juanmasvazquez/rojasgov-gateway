@@ -4,7 +4,7 @@ services:
       context: .
     restart: always
     environment:
-      - BACKED_URL=${BACKED_URL}
+      - BACKEND_URL=${BACKED_URL}
       - APP_URL=${APP_URL}
     ports:
       - "${PORT}:8081"
