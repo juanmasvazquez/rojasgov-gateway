@@ -4,27 +4,33 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: services
-          uri: ${BACKEND_URL:http://localhost:8080}
-          predicates:
-            - Path=/services/**
-
         - id: websocket
           uri: ${BACKEND_URL:http://localhost:8080}
           predicates:
             - Path=/services/socket/**
 
-        - id: app
-          uri: ${APP_URL:http://localhost:8080}
+        - id: services
+          uri: ${BACKEND_URL:http://localhost:8080}
           predicates:
-            - Path=/*
+            - Path=/services/**
 
         - id: app-assets
           uri: ${APP_URL:http://localhost:8080}
           predicates:
             - Path=/assets/**
+
+        - id: app
+          uri: ${APP_URL:http://localhost:8080}
+          predicates:
+            - Path=/**
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: TRACE
     reactor.netty.http.client: DEBUG
     reactor.netty.http.server: DEBUG
+reactor:
+  netty:
+    http:
+      server:
+        access-log-enabled: true
