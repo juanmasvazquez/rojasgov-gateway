@@ -5,20 +5,6 @@ spring:
     gateway:
       server:
         webflux:
-          globalcors:
-            corsConfigurations:
-              '[/**]':
-                allowedOrigins:
-                  - "http://localhost:4200"
-                  - "http://localhost:4201"
-                allowedMethods:
-                  - GET
-                  - POST
-                  - PUT
-                  - DELETE
-                  - OPTIONS
-                allowedHeaders: "*"
-                allowCredentials: true
           routes:
             - id: services
               uri: ${BACKEND_URL:http://localhost:8080}
