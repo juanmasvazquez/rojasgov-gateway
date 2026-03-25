@@ -10,16 +10,22 @@ spring:
               uri: ${BACKEND_URL:http://localhost:8080}
               predicates:
                 - Path=/services/api/**
+              filters:
+                - SetRequestHeader=Origin, http://localhost:4200
 
             - id: app-assets
               uri: ${APP_URL:http://localhost:8080}
               predicates:
                 - Path=/assets/**
+              filters:
+                - SetRequestHeader=Origin, http://localhost:4200
 
             - id: app
               uri: ${APP_URL:http://localhost:8080}
               predicates:
                 - Path=/**
+              filters:
+                - SetRequestHeader=Origin, http://localhost:4200
 logging:
   level:
     org.springframework.cloud.gateway.filter.RouteToRequestUrlFilter: TRACE
