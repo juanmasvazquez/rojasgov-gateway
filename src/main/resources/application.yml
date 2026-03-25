@@ -20,3 +20,6 @@ spring:
               uri: ${APP_URL:http://localhost:8080}
               predicates:
                 - Path=/**
+logging:
+  level:
+    org.springframework.cloud.gateway.filter.RouteToRequestUrlFilter: TRACE
