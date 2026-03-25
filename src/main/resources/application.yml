@@ -3,23 +3,20 @@ server:
 spring:
   cloud:
     gateway:
-      routes:
-        - id: websocket
-          uri: ${BACKEND_URL:http://localhost:8080}
-          predicates:
-            - Path=/services/socket/**
+      server:
+        webflux:
+          routes:
+            - id: services
+              uri: ${BACKEND_URL:http://localhost:8080}
+              predicates:
+                - Path=/services/api/**
 
-        - id: services
-          uri: ${BACKEND_URL:http://localhost:8080}
-          predicates:
-            - Path=/services/**
+            - id: app-assets
+              uri: ${APP_URL:http://localhost:8080}
+              predicates:
+                - Path=/assets/**
 
-        - id: app-assets
-          uri: ${APP_URL:http://localhost:8080}
-          predicates:
-            - Path=/assets/**
-
-        - id: app
-          uri: ${APP_URL:http://localhost:8080}
-          predicates:
-            - Path=/**
+            - id: app
+              uri: ${APP_URL:http://localhost:8080}
+              predicates:
+                - Path=/**
