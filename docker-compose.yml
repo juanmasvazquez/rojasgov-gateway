@@ -1,0 +1,20 @@
+services:
+  gateway:
+    build:
+      context: .
+    restart: always
+    environment:
+      - BACKED_URL=${BACKED_URL}
+      - APP_URL=${APP_URL}
+    ports:
+      - "${PORT}:8081"
+    logging:
+      options:
+        max-size: "20m"
+        max-file: "5"
+    networks:
+      - localdocker
+
+networks:
+  localdocker:
+    external: true
