@@ -5,12 +5,12 @@ spring:
     gateway:
       routes:
         - id: services
-          uri: ${BACKED_URL:http://localhost:8080}
+          uri: ${BACKEND_URL:http://localhost:8080}
           predicates:
             - Path=/services/**
 
         - id: websocket
-          uri: ${BACKED_URL:http://localhost:8080}
+          uri: ${BACKEND_URL:http://localhost:8080}
           predicates:
             - Path=/services/socket/**
 
