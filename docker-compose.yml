@@ -4,12 +4,11 @@ services:
       context: .
     restart: always
     environment:
-      - PORT=${PORT}
       - BACKEND_URL=${BACKEND_URL}
       - APP_URL=${APP_URL}
       - SPRING_PROFILES_ACTIVE=${PROFILE}
-    expose:
-      - "${PORT}"
+    ports:
+      - "${PORT}:8090"
     logging:
       options:
         max-size: "20m"
