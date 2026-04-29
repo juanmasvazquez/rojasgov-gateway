@@ -1,11 +1,6 @@
 server:
   port: 8090
   forward-headers-strategy: framework
-  ssl:
-    enabled: true
-    key-store: classpath:cert.p12
-    key-store-password: Mod3rN1z@c10n.2026
-    key-store-type: PKCS12
 spring:
   cloud:
     gateway:
