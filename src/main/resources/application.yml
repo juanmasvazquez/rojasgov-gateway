@@ -2,8 +2,8 @@ server:
   port: 8090
   ssl:
     enabled: true
-    key-store: classpath:rojas_gov_ar.pfx
-    key-store-password: dattatec
+    key-store: classpath:cert.p12
+    key-store-password: B1t0n3!.II6
     key-store-type: PKCS12
 spring:
   cloud:
